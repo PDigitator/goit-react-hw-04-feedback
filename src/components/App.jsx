@@ -1,16 +1,91 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
+// import { Component } from 'react';
+
+// import Section from 'components/Section/Section';
+// import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
+// import Statistics from 'components/Statistics/Statistics';
+// import Notification from 'components/Notification/Notification';
+
+// class App extends Component {
+//   state = {
+//     good: 0,
+//     neutral: 0,
+//     bad: 0,
+//   };
+
+//   handleFeedback = evt => {
+//     const stateKey = evt.target.name;
+//     this.setState(prevState => ({ [stateKey]: prevState[stateKey] + 1 }));
+//   };
+
+//   countTotalFeedback = ({ good, neutral, bad } = this.state) =>
+//     good + neutral + bad;
+
+//   countPositiveFeedbackPercentage = ({ good } = this.state) =>
+//     Math.round((good / this.countTotalFeedback()) * 100);
+
+//   render() {
+//     const { good, neutral, bad } = this.state;
+//     const options = Object.keys(this.state);
+
+//     return (
+//       <>
+//         <Section title="Please leave feedback">
+//           <FeedbackOptions
+//             options={options}
+//             onLeaveFeedback={this.handleFeedback}
+//           />
+//         </Section>
+//         <Section title="Statistics">
+//           {this.countTotalFeedback() > 0 ? (
+//             <Statistics
+//               good={good}
+//               neutral={neutral}
+//               bad={bad}
+//               total={this.countTotalFeedback()}
+//               positivePercentage={this.countPositiveFeedbackPercentage()}
+//             />
+//           ) : (
+//             <Notification message="There is no feedback" />
+//           )}
+//         </Section>
+//       </>
+//     );
+//   }
+// }
+
+// export default App;
+
+import { useState, useEffect } from 'react';
+
+const App = () => {
+  // // 1. Run effect only on mount to init some library
+  // useEffect(() => {
+  //   initThirdPartyLibrary();
+  // }, []);
+
+  // // 2. Run effect only when username prop changes
+  // useEffect(() => {
+  //   fetchUser(username);
+  // }, [username]);
+
+  // // 3. Run effect on value prop change
+  // useEffect(() => {
+  //   // Do stuff when value prop changes
+  // }, [value]);
+
+  // // 4. Run effect on isLoggedIn state change
+  // useEffect(() => {
+  //   // Do stuff when isLoggedIn state changes
+  // }, [isLoggedIn]);
+
+  // 5. Run effect on mount and clean up on unmount
+  useEffect(() => {
+    const handleKeyDown = e => console.log('keydown event: ', e);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 };
+
+export default App;
