@@ -19,7 +19,6 @@ const App = () => {
     switch (stateKey) {
       case 'good':
         setGood(prevState => prevState + 1);
-
         break;
 
       case 'neutral':
